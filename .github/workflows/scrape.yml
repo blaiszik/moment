@@ -3,7 +3,7 @@ name: Scrape latest data
 on:
   push:
     branches:
-      - master
+      - main
   workflow_dispatch:
   schedule:
     - cron:  '*/2 * * * *'
@@ -16,9 +16,6 @@ jobs:
       uses: actions/checkout@v2
       with:
         fetch-depth: 0
-    - name: Fetch latest data
-      run: |-
-        curl "https://static01.nyt.com/elections-assets/2020/data/api/2020-11-03/votes-remaining-page/national/president.json" | jq . > results.json
     - name: Commit and push if it changed
       run: |-
         git config user.name "Automated"
@@ -37,8 +34,7 @@ jobs:
         pip install -r requirements.txt
     - name: Run data collection scripts
       run: |-
-        python -m pip install -U pip
-        pip install -r requirements.txt
+        python statistics.py
     - name: Commit and push if it changed
       run: |-
         git config user.name "Automated"

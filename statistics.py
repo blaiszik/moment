@@ -31,7 +31,7 @@ def make_link(
     branch="main",
     file="statistics.json",
 ):
-    if link_type is "github":
+    if link_type == "github":
         return f"https://raw.githubusercontent.com/{proj}/{repo}/{branch}/{path}/{file}"
 
 

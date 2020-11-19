@@ -8,11 +8,12 @@ config = {
     "projects": "./data/input/projects.jsonl",
     "statistics": "./data/output/statistics.jsonl",
     "leaderboard": "./data/output/leaderboard.jsonl",
+    "moment_dir":".moment"
 }
 
 def collect_credits(proj):
     credits = {}
-    path = os.path.join(proj["link"], ".momentous", "statistics.json")
+    path = os.path.join(proj["link"], moment_dir, "statistics.json")
     with jsonlines.open(path) as reader:
         for obj in reader:
             user = list(obj["credits"].keys())[0]
@@ -27,7 +28,7 @@ def make_link(
     proj,
     repo,
     link_type="github",
-    path=".momentous",
+    path=".moment",
     branch="main",
     file="statistics.json",
 ):
@@ -36,6 +37,7 @@ def make_link(
 
 
 def get_creds(proj, repo, path):
+    print(make_link(proj=proj, repo=repo, path=path))
     f = requests.get(make_link(proj=proj, repo=repo, path=path))
     decoded = f.content.decode("utf-8").split("\n")
     credits = [json.loads(obj) for obj in decoded if obj != ""]

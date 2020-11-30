@@ -34,7 +34,7 @@ jobs:
         pip install -r requirements.txt
     - name: Run data collection scripts
       run: |-
-        python statistics.py
+        sh run_all.sh
     - name: Commit and push if it changed
       run: |-
         git config user.name "Automated"

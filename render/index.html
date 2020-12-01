@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>Moment - A new way to collaborate with scientists</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/offcanvas/">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <style>
+        html,
+        body {
+            overflow-x: hidden;
+            /* Prevent scroll on narrow devices */
+        }
+
+        body {
+            padding-top: 56px;
+        }
+
+        @media (max-width: 767.98px) {
+            .offcanvas-collapse {
+                position: fixed;
+                top: 56px;
+                /* Height of navbar */
+                bottom: 0;
+                width: 100%;
+                padding-right: 1rem;
+                padding-left: 1rem;
+                overflow-y: auto;
+                background-color: var(--gray-dark);
+                transition: -webkit-transform .3s ease-in-out;
+                transition: transform .3s ease-in-out;
+                transition: transform .3s ease-in-out, -webkit-transform .3s ease-in-out;
+                -webkit-transform: translateX(100%);
+                transform: translateX(100%);
+            }
+
+            .offcanvas-collapse.open {
+                -webkit-transform: translateX(-1rem);
+                transform: translateX(-1rem);
+                /* Account for horizontal padding on navbar */
+            }
+        }
+
+        .nav-scroller {
+            position: relative;
+            z-index: 2;
+            height: 2.75rem;
+            overflow-y: hidden;
+        }
+
+        .nav-scroller .nav {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: nowrap;
+            flex-wrap: nowrap;
+            padding-bottom: 1rem;
+            margin-top: -1px;
+            overflow-x: auto;
+            color: rgba(255, 255, 255, .75);
+            text-align: center;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .nav-underline .nav-link {
+            padding-top: .75rem;
+            padding-bottom: .75rem;
+            font-size: .875rem;
+            color: var(--secondary);
+        }
+
+        .nav-underline .nav-link:hover {
+            color: var(--blue);
+        }
+
+        .nav-underline .active {
+            font-weight: 500;
+            color: var(--gray-dark);
+        }
+
+        .text-white-50 {
+            color: rgba(255, 255, 255, .5);
+        }
+
+        .bg-purple {
+            background-color: var(--purple);
+        }
+
+        .border-bottom {
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .box-shadow {
+            box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+        }
+
+        .lh-100 {
+            line-height: 1;
+        }
+
+        .lh-125 {
+            line-height: 1.25;
+        }
+
+        .lh-150 {
+            line-height: 1.5;
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+
+    <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Moment</a>
+    </nav>
+
+    
+
+    <main role="main" class="container">
+        <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow">
+            <div class="lh-100">
+                <h6 class="mb-0 text-white lh-100">Dashboard</h6>
+            </div>
+        </div>
+
+        <div class="my-3 p-3 bg-white rounded box-shadow">
+            <h6 class="border-bottom border-gray pb-2 mb-0">Projects</h6>
+            
+                <div class="media text-muted pt-3">
+                <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                    <strong class="d-block text-gray-dark">blaiszik/moment1</strong>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla posuere faucibus placerat. Aliquam ligula risus, sagittis eu placerat sit amet, porta id orci. Etiam eu justo finibus, dictum lorem a, malesuada sem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In volutpat tristique justo, vel rutrum arcu mollis vitae. Phasellus suscipit tellus et dui pretium, sed finibus diam pharetra. Morbi ligula ex, ultricies nec ipsum ut, auctor lobortis ipsum. Donec ornare id felis sed volutpat. Vivamus ullamcorper maximus quam nec lacinia. Proin posuere sem sed tellus mollis, id malesuada purus molestie.
+                </p>
+                <div>
+                    <a href="https://github.com/blaiszik/moment1" 
+                         class="btn btn-dark btn-sm active" role="button" aria-pressed="true">Project
+                    </a>
+                    <a href="https://github.com/blaiszik/moment1/issues" 
+                         class="btn btn-dark btn-sm active" role="button" aria-pressed="true">Issues
+                    </a>
+                </div>
+                
+
+            </div>
+            
+                <div class="media text-muted pt-3">
+                <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                    <strong class="d-block text-gray-dark">blaiszik/moment2</strong>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla posuere faucibus placerat. Aliquam ligula risus, sagittis eu placerat sit amet, porta id orci. Etiam eu justo finibus, dictum lorem a, malesuada sem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In volutpat tristique justo, vel rutrum arcu mollis vitae. Phasellus suscipit tellus et dui pretium, sed finibus diam pharetra. Morbi ligula ex, ultricies nec ipsum ut, auctor lobortis ipsum. Donec ornare id felis sed volutpat. Vivamus ullamcorper maximus quam nec lacinia. Proin posuere sem sed tellus mollis, id malesuada purus molestie.
+                </p>
+                <div>
+                    <a href="https://github.com/blaiszik/moment2" 
+                         class="btn btn-dark btn-sm active" role="button" aria-pressed="true">Project
+                    </a>
+                    <a href="https://github.com/blaiszik/moment2/issues" 
+                         class="btn btn-dark btn-sm active" role="button" aria-pressed="true">Issues
+                    </a>
+                </div>
+                
+
+            </div>
+            
+    
+            <small class="d-block text-right mt-3">
+                <a href="#">All projects</a>
+            </small>
+        </div>
+
+        <div class="my-3 p-3 bg-white rounded box-shadow">
+            <h6 class="border-bottom border-gray pb-2 mb-0">Leaderboard</h6>
+              2020/12/01, 22:01:32
+
+              
+    <table class="table">
+    <thead>
+        <tr>
+        <th scope="col">User</th>
+        <th scope="col">Points</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+            <tr>
+            <td>blaiszik</th>
+            <td>9</td>
+            </tr>
+        
+            <tr>
+            <td>ward</th>
+            <td>15</td>
+            </tr>
+        
+            <tr>
+            <td>pruyne</th>
+            <td>25</td>
+            </tr>
+        
+            <tr>
+            <td>james</th>
+            <td>25</td>
+            </tr>
+        
+    </tbody>
+    </table>
+             
+    <small class="d-block text-right mt-3">
+        <a href="#">See leaderboard history</a>
+    </small>
+    </div>
+    </main>
+</body>
+
+</html>

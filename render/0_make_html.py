@@ -19,7 +19,7 @@ def make_html(projects, leaderboard):
         tm = Template(f.read())
         text = tm.render(projects=projects, leaderboard=leaderboard)
         
-    with open('index.html', 'w') as f:
+    with open('index.html', 'w+') as f:
         f.write(text)
 
 projects = get_projects()

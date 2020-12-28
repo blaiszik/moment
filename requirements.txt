@@ -2,3 +2,4 @@ jsonlines
 requests
 pandas
 jinja2
+bibtexparser

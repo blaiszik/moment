@@ -1,5 +1,6 @@
 import pandas as pd
 import jsonlines
+import bibtexparser
 import os
 import requests
 import json
@@ -9,6 +10,7 @@ config = {
     "projects": "../input/projects.jsonl",
     "statistics": "../output/statistics.jsonl",
     "leaderboard": "../output/leaderboard.jsonl",
+    "articles": "../output/articles.jsonl",
     "moment_dir":"../.moment"
 }
 
@@ -87,6 +89,30 @@ def make_leaderboard(input_file=config['statistics'], output_file=config['leader
         writer.write(leaderboard)
     return leaderboard
     
+
+    # Read BibTeX formatted article list from a repo
+def get_articles(proj, repo, path):    
+    link = make_link(proj=proj, repo=repo, path=path, file="articles.bib")
+    print(link)
+    f = requests.get(make_link(proj=proj, repo=repo, path=path, file="articles.bib"))
+    f.content.decode('utf-8')
+    bib_database = bibtexparser.loads(f.content.decode('utf-8'))
+    bib_database.entries
+
+    today = datetime.now()
+    proj = {"date": today.strftime("%Y/%m/%d, %H:%M:%S"),
+            "project":proj,
+            "repo":repo, 
+            "articles": bib_database.entries}
+    return proj
+
+
+def write_articles(input_file=config['projects'], output_file=config['articles']):
+    with jsonlines.open(input_file, mode="r") as reader:
+        with jsonlines.open(output_file, "a") as writer:
+            for proj in reader:
+                creds = get_articles(proj["project"], proj["repo"], proj["path"])
+                writer.write(creds)
     # # Temporary object to hold new credits
     # credits = {}
     
@@ -106,4 +132,5 @@ def make_leaderboard(input_file=config['statistics'], output_file=config['leader
 
 
 write_creds()
+write_articles()
 make_leaderboard()

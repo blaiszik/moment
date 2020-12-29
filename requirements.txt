@@ -3,3 +3,4 @@ requests
 pandas
 jinja2
 bibtexparser
+ghapi

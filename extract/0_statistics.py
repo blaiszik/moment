@@ -104,7 +104,6 @@ def make_leaderboard(
 
 def get_articles(proj, repo, path):
     link = make_link(proj=proj, repo=repo, path=path, file="articles.bib")
-    print(link)
     f = requests.get(make_link(proj=proj, repo=repo, path=path, file="articles.bib"))
     f.content.decode("utf-8")
     bib_database = bibtexparser.loads(f.content.decode("utf-8"))

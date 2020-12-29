@@ -141,6 +141,10 @@
                 <h6 class="mb-0 text-white lh-100">Dashboard</h6>
             </div>
         </div>
+        <h3> Moment - Statistics </h3>
+        <span> <div class="badge badge-success">{{projects|length}} </div> projects </span>
+        <span> <div class="badge badge-dark">{{leaderboard.credits.items()|length}} </div> users </span>
+
 
         <div class="my-3 p-3 bg-white rounded box-shadow">
             <h6 class="border-bottom border-gray pb-2 mb-0">Projects</h6>
@@ -183,7 +187,7 @@
         {% for name, value in leaderboard.credits.items() %}
             <tr>
             <td>{{name}}</th>
-            <td>{{value}}</td>
+            <td> <div class="badge badge-primary">{{value}}</div></td>
             </tr>
         {% endfor %}
     </tbody>
@@ -193,8 +197,6 @@
         <a href="#">See leaderboard history</a>
     </small>
     </div>
-
-    Articles
 
     <div class="my-3 p-3 bg-white rounded box-shadow">
             <h6 class="border-bottom border-gray pb-2 mb-0">Articles</h6> 

@@ -5,6 +5,7 @@ import os
 import requests
 import json
 from datetime import date, datetime
+from ghapi.all import GhApi
 
 config = {
     "projects": "../input/projects.jsonl",
@@ -13,6 +14,7 @@ config = {
     "articles": "../output/articles.jsonl",
     "article_summary": "../output/article_summary.jsonl",
     "moment_dir": "../.moment",
+    "issues": "../output/issues.jsonl",
 }
 
 
@@ -154,6 +156,41 @@ def make_article_summary(
         writer.write(summary)
 
 
+def serialize_issue(issue):
+    new_issue = {}
+    new_issue["user"] = dict(issue["user"])
+    new_issue["title"] = issue["title"]
+    new_issue["html_url"] = issue["html_url"]
+    new_issue["url"] = issue["url"]
+    new_issue["state"] = issue["state"]
+    new_issue["body"] = issue["body"]
+    new_issue["created_at"] = issue["created_at"]
+    new_issue["updated_at"] = issue["updated_at"]
+    new_issue["closed_at"] = issue["closed_at"]
+    return dict(new_issue)
+
+
+def write_issues(output_file=config["issues"]):
+    issues = {}
+    with jsonlines.open(config["projects"], mode="r") as reader:
+        for proj in reader:
+            api = GhApi()
+            r = api.issues.list_for_repo(
+                state="open", owner=proj["project"], repo=proj["repo"]
+            )
+            issues[f'{proj["project"]}/{proj["repo"]}'] = [
+                serialize_issue(i) for i in r
+            ]
+    with jsonlines.open(output_file, "a") as writer:
+        writer.write(issues)
+    return issues
+
+
+# def write_issues():
+#     with jsonlines.open(config['projects'], mode="r") as reader:
+#     with jsonlines.open(config['projects'], mode="r") as reader:
+
+
 # # Temporary object to hold new credits
 # credits = {}
 
@@ -176,3 +213,4 @@ write_creds()
 write_articles()
 make_leaderboard()
 make_article_summary()
+write_issues()

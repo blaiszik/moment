@@ -15,6 +15,26 @@ Template TBD
 Submit your proposed project by issuing a pull request to this repository adding your new project repository to the file located in this repository at 
 `moment/data/input/projects.jsonl`
 
+This input currently accepts the following keys:
+
+`project`: This maps to a user or organization in Github
+
+`repo`: This maps to an individual repository in Github
+
+`path`: Lists the path the Moment serviec should aggregate project metadata (e.g., credits, papers, etc.) from
+
+`description`: A free text description of the project to help others find and understand the scope of the project
+
+
+**Please note this should be a single line in the commit**
+```json
+{
+  "project":"blaiszik", 
+   "repo":"moment-ml",
+   "path":".moment", 
+   "description": "My project description"
+}
+```
 
 # Support
 

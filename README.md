@@ -27,6 +27,7 @@ This input currently accepts the following keys:
 
 
 **Please note this should be a single line in the commit**
+To register a project at the following location `https://github.com/blaiszik/moment` with the default directory `.moment`
 ```json
 {
   "project":"blaiszik", 

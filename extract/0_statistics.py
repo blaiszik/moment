@@ -39,15 +39,23 @@ def make_link(
     branch="main",
     file="statistics.json",
 ):
+    # TODO: query the default branch from the API?
+    # ask users to specify default branch on registration?
     if link_type == "github":
         return f"https://raw.githubusercontent.com/{proj}/{repo}/{branch}/{path}/{file}"
 
 
 def get_creds(proj, repo, path):
+    print(make_link(proj=proj, repo=repo, path=path))
     f = requests.get(make_link(proj=proj, repo=repo, path=path))
-    decoded = f.content.decode("utf-8").split("\n")
-    credits = [json.loads(obj) for obj in decoded if obj != ""]
-    credits = [obj["credits"] for obj in credits]
+
+    if f.ok:
+        decoded = f.content.decode("utf-8").split("\n")
+        credits = [json.loads(obj) for obj in decoded if obj != ""]
+        credits = [obj["credits"] for obj in credits]
+    else:
+        credits = []
+
     today = datetime.now()
     proj = {
         "date": today.strftime("%Y/%m/%d, %H:%M:%S"),
@@ -167,6 +175,9 @@ def serialize_issue(issue):
     new_issue["created_at"] = issue["created_at"]
     new_issue["updated_at"] = issue["updated_at"]
     new_issue["closed_at"] = issue["closed_at"]
+    new_issue["labels"] = [
+        {"name": label["name"], "color": label["color"]} for label in issue["labels"]
+    ]
     return dict(new_issue)
 
 

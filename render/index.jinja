@@ -27,6 +27,18 @@
             padding-top: 56px;
         }
 
+        .badge-test {
+            background-color: #d43f3a;
+        }
+
+        .badge-enhancement {
+            background-color: var(--purple);
+        }
+
+        .badge-question {
+            background-color: var(--green);
+        }
+
         @media (max-width: 767.98px) {
             .offcanvas-collapse {
                 position: fixed;
@@ -126,7 +138,7 @@
         <a class="navbar-brand" href="#">Moment</a>
     </nav>
 
-    
+
 
     <main role="main" class="container">
         <div class="jumbotron jumbotron-fluid">
@@ -145,28 +157,53 @@
         <span> <div class="badge badge-success">{{projects|length}} </div> projects </span>
         <span> <div class="badge badge-dark">{{leaderboard.credits.items()|length}} </div> users </span>
 
-
         <div class="my-3 p-3 bg-white rounded box-shadow">
             <h6 class="border-bottom border-gray pb-2 mb-0">Projects</h6>
             {% for project in projects %}
-                <div class="media text-muted pt-3">
-                <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                    <strong class="d-block text-gray-dark">{{project.project}}/{{project.repo}}</strong>
-                    {{project.description}}
-                </p>
-                <div>
-                    <a href="https://github.com/{{project.project}}/{{project.repo}}" 
-                         class="btn btn-dark btn-sm active" role="button" aria-pressed="true">Project
-                    </a>
-                    <a href="https://github.com/{{project.project}}/{{project.repo}}/issues" 
-                         class="btn btn-dark btn-sm active" role="button" aria-pressed="true">Issues
-                    </a>
-                </div>
-                
 
+            <div class="media text-muted pt-3">
+              <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                <strong class="d-block text-gray-dark">{{project.project}}/{{project.repo}}</strong>
+                <span>{{project.description}}</span>
+                <details>
+                  <summary>
+                    {{project.issues|length}} Linked Issues
+                    {% for label, color in project.labels.items() %}
+                      <span class="badge text-light" style="background-color:#{{color}}">{{label}}</span>
+                    {% endfor %}
+                  </summary>
+                  <ol>
+                  {% for issue in project.issues %}
+
+                  <li>
+                  <div>
+                  <strong>{{issue.title}}</strong>
+                  {% for label in issue.labels %}
+                    <span class="badge text-light" style="background-color:#{{label.color}}">{{label.name}}</span>
+                  {% endfor %}
+                  </div>
+                  </li>
+
+                  {{issue.body}}
+
+                  {% endfor %}
+                  </ol>
+                </details>
+                <!-- </span> -->
+              </div>
+
+              <div>
+                <a href="https://github.com/{{project.project}}/{{project.repo}}"
+                   class="btn btn-dark btn-sm active" role="button" aria-pressed="true">Project
+                </a>
+                <a href="https://github.com/{{project.project}}/{{project.repo}}/issues"
+                   class="btn btn-dark btn-sm active" role="button" aria-pressed="true">Issues
+                </a>
+              </div>
             </div>
+
             {% endfor %}
-    
+
             <small class="d-block text-right mt-3">
                 <a href="#">All projects</a>
             </small>
@@ -175,7 +212,7 @@
         <div class="my-3 p-3 bg-white rounded box-shadow">
             <h6 class="border-bottom border-gray pb-2 mb-0">Leaderboard</h6>
               {{ leaderboard.date }}
-              
+
     <table class="table">
     <thead>
         <tr>
@@ -192,17 +229,17 @@
         {% endfor %}
     </tbody>
     </table>
-             
+
     <small class="d-block text-right mt-3">
         <a href="#">See leaderboard history</a>
     </small>
     </div>
 
     <div class="my-3 p-3 bg-white rounded box-shadow">
-            <h6 class="border-bottom border-gray pb-2 mb-0">Articles</h6> 
+            <h6 class="border-bottom border-gray pb-2 mb-0">Articles</h6>
             {% for proj in articles %}
             <div>
-            <h4> <a href="#" class="badge badge-primary">{{proj.count}}</a> {{proj.project}} </h4> 
+            <h4> <a href="#" class="badge badge-primary">{{proj.count}}</a> {{proj.project}} </h4>
             <ul>
                 {% for article in proj.articles %}
                 <li>

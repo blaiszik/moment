@@ -26,3 +26,6 @@
 {"date": "2021/03/09, 01:00:07", "project": "blaiszik", "repo": "moment-ml", "credits": [{"blaiszik": 2}, {"ward": 5}, {"pruyne": 10}, {"james": 10}]}
 {"date": "2021/03/09, 01:00:07", "project": "blaiszik", "repo": "moment-software", "credits": [{"blaiszik": 7}, {"ward": 10}, {"pruyne": 15}, {"james": 15}, {"foster": 7}, {"blaiszik": 2}]}
 {"date": "2021/03/09, 01:00:07", "project": "bdecost", "repo": "moment-test1", "credits": []}
+{"date": "2021/03/09, 01:13:05", "project": "blaiszik", "repo": "moment-ml", "credits": [{"blaiszik": 2}, {"ward": 5}, {"pruyne": 10}, {"james": 10}]}
+{"date": "2021/03/09, 01:13:05", "project": "blaiszik", "repo": "moment-software", "credits": [{"blaiszik": 7}, {"ward": 10}, {"pruyne": 15}, {"james": 15}, {"foster": 7}, {"blaiszik": 2}]}
+{"date": "2021/03/09, 01:13:05", "project": "bdecost", "repo": "moment-test1", "credits": []}

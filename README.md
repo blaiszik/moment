@@ -10,8 +10,10 @@ A key goal is to enable building and maintaining of software and services, and c
 
 # Getting Started
 To start a new project:
-### Clone the template repository
-`git clone https://github.com/blaiszik/moment1.git`
+### Clone a template repository
+**Software Template:** `git clone https://github.com/blaiszik/moment-software`
+
+**ML Template:** `git clone https://github.com/blaiszik/moment-ml`
 
 ### Fill in the project description
 Template TBD

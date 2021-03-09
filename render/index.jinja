@@ -163,7 +163,7 @@
 
             <div class="media text-muted pt-3">
               <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                <strong class="d-block text-gray-dark">{{project.project}}/{{project.repo}}</strong>
+                <strong class="d-block text-gray-dark"><a href="https://www.github.com/{{project.project}}/{{project.repo}}">{{project.project}}/{{project.repo}}</a></strong>
                 <span>{{project.description}}</span>
                 <details>
                   <summary>
@@ -177,7 +177,7 @@
 
                   <li>
                   <div>
-                  <strong>{{issue.title}}</strong>
+                  <strong><a href="{{issue.html_url}}">{{issue.title}}</a></strong>
                   {% for label in issue.labels %}
                     <span class="badge text-light" style="background-color:#{{label.color}}">{{label.name}}</span>
                   {% endfor %}

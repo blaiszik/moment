@@ -18,17 +18,17 @@ config = {
 }
 
 
-def collect_credits(proj):
-    credits = {}
-    path = os.path.join(proj["link"], moment_dir, "statistics.json")
-    with jsonlines.open(path) as reader:
-        for obj in reader:
-            user = list(obj["credits"].keys())[0]
-            if credits.get(user):
-                credits[user] = credits[user] + obj["credits"][user]
-            else:
-                credits[user] = obj["credits"][user]
-    return credits
+# def collect_credits(proj):
+#     credits = {}
+#     path = os.path.join(proj["link"], moment_dir, "statistics.json")
+#     with jsonlines.open(path) as reader:
+#         for obj in reader:
+#             user = list(obj["credits"].keys())[0]
+#             if credits.get(user):
+#                 credits[user] = credits[user] + obj["credits"][user]
+#             else:
+#                 credits[user] = obj["credits"][user]
+#     return credits
 
 
 def make_link(

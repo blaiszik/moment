@@ -10,15 +10,12 @@ A key goal is to enable building and maintaining of software and services, and c
 
 # Getting Started
 To start a new project:
-### Clone a template repository
+### 1. Clone a template repository
 **Software Template:** `git clone https://github.com/blaiszik/moment-software`
 
 **ML Template:** `git clone https://github.com/blaiszik/moment-ml`
 
-### Fill in the project description
-Template TBD
-
-### Add Your Project
+### 2. Add Your Project
 Submit your proposed project by issuing a pull request to this repository adding your new project repository to the file located in this repository at 
 `moment/data/input/projects.jsonl`
 
@@ -48,7 +45,7 @@ To register a project at the following location `https://github.com/blaiszik/mom
 }
 ```
 
-### Aggregated Information
+# Aggregated Information
 Moment aggregates the following information from each project
 1. Project descriptions
 2. Project issues (currently via Github Issues)

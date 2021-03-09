@@ -3,9 +3,11 @@ Moment is a prototype framework with the goal of connecting citizen scientists w
 A key goal is to enable building and maintaining of software and services, and completion of applied ML projects jointly between academics and contributors from outside academia
 
 
-[Visit Moment](https://blaiszik.github.io/moment/)
+## [Visit Moment](https://blaiszik.github.io/moment/)
 
-
+## Templates
+[Software Project](https://github.com/blaiszik/moment-software) |
+[ML or AI Project](https://github.com/blaiszik/moment-ml) 
 
 
 # Getting Started

@@ -68,15 +68,17 @@ def sum_credits(data: []):
 
     for entry in data:
         for sub in entry:
-            print(sub)
-            user = sub["user"]
-            c_type = sub["type"]
-            val = sub["value"]
-            if not credits.get(user):
-                credits[user] = deepcopy(temp)
-                credits[user][c_type] += val
-            else:
-                credits[user][c_type] += val
+            try:
+                user = sub["user"]
+                c_type = sub["type"]
+                val = sub["value"]
+                if not credits.get(user):
+                    credits[user] = deepcopy(temp)
+                    credits[user][c_type] += val
+                else:
+                    credits[user][c_type] += val
+            except Exception as e:
+                print(e)
     print(credits)
     return credits
 

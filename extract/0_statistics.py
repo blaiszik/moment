@@ -6,6 +6,7 @@ import requests
 import json
 from datetime import date, datetime
 from ghapi.all import GhApi
+from copy import deepcopy
 
 config = {
     "projects": "../input/projects.jsonl",
@@ -16,19 +17,6 @@ config = {
     "moment_dir": "../.moment",
     "issues": "../output/issues.jsonl",
 }
-
-
-# def collect_credits(proj):
-#     credits = {}
-#     path = os.path.join(proj["link"], moment_dir, "statistics.json")
-#     with jsonlines.open(path) as reader:
-#         for obj in reader:
-#             user = list(obj["credits"].keys())[0]
-#             if credits.get(user):
-#                 credits[user] = credits[user] + obj["credits"][user]
-#             else:
-#                 credits[user] = obj["credits"][user]
-#     return credits
 
 
 def make_link(
@@ -76,15 +64,20 @@ def write_creds(input_file=config["projects"], output_file=config["statistics"])
 
 def sum_credits(data: []):
     credits = {}
+    temp = {"data": 0, "ai": 0, "infrastructure": 0}
 
     for entry in data:
-        for cred in entry:
-            for sub in cred:
-                if sub in credits:
-                    credits[sub] = credits[sub] + cred[sub]
-                else:
-                    credits[sub] = cred[sub]
-
+        for sub in entry:
+            print(sub)
+            user = sub["user"]
+            c_type = sub["type"]
+            val = sub["value"]
+            if not credits.get(user):
+                credits[user] = deepcopy(temp)
+                credits[user][c_type] += val
+            else:
+                credits[user][c_type] += val
+    print(credits)
     return credits
 
 
@@ -195,29 +188,6 @@ def write_issues(output_file=config["issues"]):
     with jsonlines.open(output_file, "a") as writer:
         writer.write(issues)
     return issues
-
-
-# def write_issues():
-#     with jsonlines.open(config['projects'], mode="r") as reader:
-#     with jsonlines.open(config['projects'], mode="r") as reader:
-
-
-# # Temporary object to hold new credits
-# credits = {}
-
-# with jsonlines.open(input_file, mode="r") as reader:
-#     for obj in reader:
-#         for credit in obj.get("credits", []):
-#             for k in credit:
-#                 if leaderboard["credits"].get(k):
-#                     leaderboard["credits"][k] = (
-#                         leaderboard["credits"][k] + credit[k]
-#                     )
-#                 else:
-#                     leaderboard["credits"][k] = credit[k]
-# with jsonlines.open(output_file, "a") as writer:
-#     writer.write(leaderboard)
-# return leaderboard
 
 
 write_creds()

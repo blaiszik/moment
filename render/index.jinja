@@ -217,14 +217,18 @@
     <thead>
         <tr>
         <th scope="col">User</th>
-        <th scope="col">Points</th>
+        <th scope="col">Data</th>
+        <th scope="col">AI</th>
+        <th scope="col">Infrastructure</th>
         </tr>
     </thead>
     <tbody>
         {% for name, value in leaderboard.credits.items() %}
             <tr>
             <td>{{name}}</th>
-            <td> <div class="badge badge-primary">{{value}}</div></td>
+            <td> <div class="badge badge-primary">{{value.data}}</div></td>
+            <td> <div class="badge badge-success">{{value.ai}}</div></td>
+            <td> <div class="badge badge-dark">{{value.infrastructure}}</div></td>
             </tr>
         {% endfor %}
     </tbody>
